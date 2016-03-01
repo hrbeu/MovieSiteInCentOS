@@ -1,0 +1,22 @@
+$def with(movies,count,key)
+$#定义额外属性title
+$var title:index.html
+<head><title>MY MOVIE SITE</title></head>
+<h4>»欢迎光临</h4>
+<h1>MY MOVIE SITE</h1>
+<form action="/" method="POST">
+    <input type="text" name="title"/>
+    <input type="submit" value="搜索"/>
+</form>
+<hr>
+$if count>0:
+    <p>共$count部影片<p>
+    $if key:
+		<b><u>与<a href='http://www.baidu.com/s?wd=$key&cl=3' target="_blank">$key</a>有关</u></b>
+$else:
+	  <p>没找到符合条件的影片</p>
+<p>影片列表</p>
+$for movie in movies:
+    <li>
+        <a href="/movie/$movie['id']">$movie['title']</a>
+    </li> 

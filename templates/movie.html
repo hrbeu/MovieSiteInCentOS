@@ -1,0 +1,25 @@
+$def with (movie)
+$#定义额外属性title
+$var title:movie.html
+<head><title>$movie['title']</title></head>
+<h4><a href="/">回到首页</a></h4>
+<h1>$movie['title']</h1>
+<img src="/static/poster/$(movie['id']).jpg">
+<hr>
+<p>原名:$movie['origin']</p>
+<p>豆瓣:<a href='$movie['url']' target="_blank">$movie['url']</a></p>
+<p>评分:$movie['rating']</p>
+<p>海报:<a href='$movie['image']'>$movie['image']</a></p>
+$ directors=movie['directors'].split(',')
+<p>导演:
+$for director in directors
+    <a href='/director/$director'>$director</a></p>
+$ casts=movie['casts'].split(',')
+<p>主演:
+$for cast in casts:
+	<a href='/cast/$cast'>$cast</a>
+</p>
+<p>类型:$movie['genres']</p>
+<p>年份:$movie['year']</p>
+<p>国家:$movie['countries']</p>
+<p>简介:$movie['summary']</p>

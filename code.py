@@ -19,8 +19,8 @@ class index:
           statement='SELECT COUNT(*) AS COUNT FROM movie'
           count=db.query(statement)[0]['COUNT']
           out=render.index(movies,count,None)
-  #        print ' %s Method from IP: %s' % (web.ctx.method,web.ctx.ip)
-   #       print ' Request page %s ' % out.title
+          print ' %s Method from IP: %s' % (web.ctx.method,web.ctx.ip)
+          print ' Request page %s ' % out.title
           return out
 
      def POST(self):
@@ -84,6 +84,7 @@ def internalerror():
     #return web.internalerror('Bad, bad server. No donut for you.')
     return web.internalerror(render.notfound())
 
+print 'The value of name is'+__name__
 app=web.application(urls,globals())
 app.notfound=notfound
 app.internalerror=internalerror
